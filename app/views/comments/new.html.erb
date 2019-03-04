@@ -1,0 +1,27 @@
+	<%= form_with model: @comment , url: article_comments_path, local: true do |form| %>
+	<% if @comment.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@comment.errors.count, "error") %> prohibited
+        this comment from being saved:
+      </h2>
+      <ul>
+        <% @comment.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>	
+	<p>
+		<%= form.label :commenter %><br>
+		<%= form.text_field :commenter%><br>
+	</p>
+	<p>
+		<%= form.label :comment_Body %><br>
+	    <%= form.text_area :body %>
+	</p>
+	<p>
+		<%= form.submit%>
+	</p>
+<%= link_to 'Back', article_path(@article) %>
+<%end %>

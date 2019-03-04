@@ -1,0 +1,15 @@
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
+<p>
+  <strong>Commenter:</strong>
+  <%= @comment.commenter %>
+</p>
+ 
+<p>
+  <strong>Comment:</strong>
+  <%= @comment.body %>
+</p>
+
+<%= link_to 'Edit' , edit_comment_path(@comment) %> <br>
+<%= link_to 'back' , article_path(@comment.article_id) %>
